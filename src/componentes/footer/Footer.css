@@ -1,0 +1,53 @@
+.box1{
+    background-color: #C9E265;
+    height: 100%;
+    width: 100%;
+    
+}
+
+
+.box2{
+    background-color: #C9E265;
+    height: 60px; 
+
+}
+
+.redes-sociais{
+    color: white!important;
+    margin-left: 10px;
+}
+
+.justify{
+    text-align: left!important;
+    color: #595f40; 
+}
+
+.texto1{
+    color: white;
+    margin-right: 50px!important;
+}
+
+.texto2{
+    color: #375156;
+}
+
+
+
+.borda{
+    border-top: 0.7px solid rgb(173, 173, 173);
+    width: 100%;
+    
+}
+
+.titulos{
+    font-weight: bold!important;
+    color: #595f40;
+}
+
+.title {
+        text-decoration: none!important;
+        color: black;
+
+    }
+
+
