@@ -24,6 +24,7 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import SobreNos from './paginas/sobreNos/SobreNos';
 import PorqueUsar from './paginas/porqueUsar/PorqueUsar';
+import { Carrinho } from './paginas/carrinho/Carrinho';
 
 
 
@@ -128,6 +129,11 @@ function App() {
             <Route exact path='/porqueUsar'>
               <Navbar />
               <PorqueUsar/>
+            </Route>
+
+            <Route exact path='/carrinho'>
+              <Navbar />
+              <Carrinho/>
             </Route>
 
         </div>

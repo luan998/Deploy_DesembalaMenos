@@ -9,6 +9,10 @@ import './ProdutoDetalhe.css'
 import { Add, AddAlarm, Remove } from '@material-ui/icons';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import axios from 'axios';
+import {useDispatch } from "react-redux";
+import Product from './Produto';
+
 
 function ProdutoDetalhe(){
     let history = useHistory();
@@ -17,7 +21,7 @@ function ProdutoDetalhe(){
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );
-    
+    const dispatch = useDispatch()
     const [quantidade, setQuantidade] = useState(1);
 
     useEffect(() => {
@@ -46,6 +50,8 @@ function ProdutoDetalhe(){
         ativo: false,
         categoria: null
     })
+
+    
 
     useEffect(() => {
         setProduto({
@@ -85,6 +91,8 @@ function ProdutoDetalhe(){
         })
     }
 
+    const [product, setProduct] = useState({});
+
     const handleQuantidade = (type: any) => {
         if (type === "dec") {
             quantidade > 1 && setQuantidade(quantidade - 1)
@@ -93,7 +101,7 @@ function ProdutoDetalhe(){
             setQuantidade(quantidade + 1)
         }
     }
-
+    
     const Container = styled.div`
     margin-top: 80px;
     `;
@@ -165,8 +173,6 @@ font-weight: 500;
     background-color: #858585;
 }
 `;
-    
-
 
 
     return (
@@ -180,7 +186,7 @@ font-weight: 500;
             <Title>{produto.nome}</Title>
             <Date>{produto.dtfabricacao}</Date>
             <Desc>{produto.descricao}</Desc>
-                        <Price>R$ {produto.preco}</Price>
+                <Price>R$ {produto.preco}</Price>
             <AddContainer>
                 <AmountContainer>
                     <Remove onClick={() => handleQuantidade("dec")}/>

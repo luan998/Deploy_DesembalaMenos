@@ -8,12 +8,29 @@ import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { busca } from '../../services/Service';
 import Categoria from '../../models/Categoria';
-import { Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import { makeStyles, createStyles, styled } from '@material-ui/styles';
 import { fontSize } from '@mui/system';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokens/tokensReducer';
 
+const useStyles = makeStyles(() =>
+  createStyles({
+    title: {
+      flexGrow: 1,
+      textAlign: "center",
+      marginLeft: '75px',
+      marginRight: '75px',
+      textDecoration: 'none',
+      cursor: 'pointer'
+    },
+    menuItemStyle: {
+      textDecoration: 'none',
+      color: '#6eb658',
+
+    }
+  })
+);
 
 export default function MenuComponent() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -21,6 +38,9 @@ export default function MenuComponent() {
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
+  const classes = useStyles();
+
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -64,7 +84,7 @@ export default function MenuComponent() {
 
 
   return (
-    <div>
+    <>
       <Typography
         variant="h6"
         id="demo-positioned-button"
@@ -73,11 +93,13 @@ export default function MenuComponent() {
         onMouseEnter={handleClick}
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        className="texto-format"
       >
-        Categorias ˅
+        Categorias ⌵
       </Typography>
       <Menu
         id="demo-positioned-menu"
+        variant="selectedMenu"
         aria-labelledby="demo-positioned-button"
         anchorEl={anchorEl}
         open={open}
@@ -85,20 +107,29 @@ export default function MenuComponent() {
         onClose={handleClose}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'left',
+          horizontal: 'center',
         }}
         transformOrigin={{
           vertical: 'top',
-          horizontal: 'left',
+          horizontal: 'center',
         }}
       >
         {categorias.map(categoria => (
-          <Link to={`/categoriaDetalhe/${categoria.id}`} style={{ textDecoration: 'none', color: '#6eb658' }} >
-            <MenuItem className='MenuItem' onClick={handleClose}>{categoria.categoria}</MenuItem>
-          </Link>
+          <div>
+            <Link to={`/categoriaDetalhe/${categoria.id}`} className={classes.menuItemStyle} >
+              <Box mx={4} className={classes.menuItemStyle}>
+
+                <MenuItem onClick={handleClose}>
+                  <Typography variant="h6" color="initial" className={classes.title}>
+                    {categoria.categoria}</Typography>
+                </MenuItem>
+
+              </Box>
+            </Link>
+          </div>
         ))
         }
       </Menu>
-    </div>
+    </>
   );
 }

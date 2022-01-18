@@ -16,6 +16,9 @@ border-radius: 3px;
 justify-content: center;
 display: flex;
 opacity: 0;
+background-color: #6eb658;
+border-color: #447535;
+color: white;
 }
 `;
 
@@ -33,7 +36,7 @@ const Container = styled.div`
     border-radius: 20px;
     border-style: solid;
     border-width: 2px;
-    border-color: grey;
+    border-color: #96BE8C;
     
 
     &:hover{
